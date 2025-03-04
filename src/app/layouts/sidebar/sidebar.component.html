@@ -1,0 +1,54 @@
+<!-- <mat-sidenav-container class="example-container">
+  <app-header></app-header>
+
+  <mat-sidenav [mode]="'side'" class="mat-sidenav" [opened]="test">
+    @for (nav of NavList; track $index) {
+    <div
+      class="hover:bg-red-300 rounded-2xl transition delay-150 duration-300 ease-in-out"
+    >
+      <mat-icon style="vertical-align: middle" class="m-5">{{
+        nav.icon
+      }}</mat-icon>
+      <button class="">
+        {{ nav.name }}
+      </button>
+    </div>
+    }
+  </mat-sidenav>
+
+  <mat-sidenav-content class="bg-gray-200 rounded-2xl">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+<div class="h-screen w-full">
+  <app-header></app-header>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav
+      [mode]="isMobile() ? 'over' : 'side'"
+      class="mat-sidenav mt-27 md:mt-20 lg:mt-21"
+      [opened]="test"
+      style="position: fixed"
+    >
+      @for (nav of NavList; track $index) {
+      <div
+        class="hover:bg-gray-200 rounded-xl transition delay-150 duration-300 ease-in-out"
+        routerLink="{{ nav.path }}"
+        routerLinkActive="bg-gray-200"
+      >
+        <mat-icon style="vertical-align: middle" class="m-9">{{
+          nav.icon
+        }}</mat-icon>
+        <button class="">
+          {{ nav.name }}
+        </button>
+      </div>
+      }
+    </mat-sidenav>
+
+    <mat-sidenav-content
+      class="bg-gray-200 rounded-2xl mt-32 lg:mt-20 transition delay-150 duration-300 md:mt-24 transition delay-150 duration-300 ease-in-out"
+    >
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

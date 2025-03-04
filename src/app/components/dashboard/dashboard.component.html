@@ -1,0 +1,78 @@
+<div class="flex flex-col gap-2 h-[100vh] scroll:smooth">
+  <p class="text-3xl font-semibold tracking-wide mt-5 ml-4">Dashboard</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <div
+      class="boxes bg-white mt-8 rounded-2xl mr-8"
+      *ngFor="let viewData of dashboardDataset; let i = index"
+    >
+      <div class="flex items-center m-6 gap-4">
+        <div class="bg-blue-200 bg-opacity-20 p-1 rounded-lg">
+          <svg
+            class="text-gray-800 dark:text-blue-600"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"
+            />
+          </svg>
+        </div>
+        <div class="flex flex-col gap-1">
+          <p class="font-semibold text-3xl">{{ viewData.value }}</p>
+          <p class="text-lg">{{ viewData.label }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4 p-2 mr-10">
+    <div class="boxes bg-white rounded-2xl h-100 col-span-2">
+      <div class="grid grid-cols-9 mt-6 ml-4">
+        <div class="col-span-8">
+          <p class="font-semibold text-2xl">Recent Orders</p>
+        </div>
+        <div class="col-span-1">
+          <mat-icon class="mat-18">search</mat-icon>
+          <mat-icon class="mat-18 ml-2">filter_list</mat-icon>
+        </div>
+      </div>
+      <div class="tables">
+        <table class="table-fixed m-4 w-full">
+          <thead class="">
+            <tr class="text-lg font-normal text-left">
+              <th class="font-semibold px-6 py-3">User</th>
+              <th class="font-semibold px-6 py-3">Date Order</th>
+              <th class="font-semibold px-6 py-3">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders" class="text-xl">
+              <td class="px-6 py-7">{{ order.user }}</td>
+              <td class="px-6 py-7">{{ order.date }}</td>
+              <td class="px-6 py-7">
+                <span [ngClass]="order.status.id === 0 ? 'class1' : 'class2'">
+                  {{ order.status.label }}</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="boxes bg-white rounded-2xl h-100">
+      <div *ngFor="let todo of todosList">
+        <div>
+          {{ todosList.label }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
