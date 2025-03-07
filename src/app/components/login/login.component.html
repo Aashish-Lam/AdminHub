@@ -1,0 +1,20 @@
+<div class="grid grid-cols-1 place-items-center h-[100vh] mt-6">
+  <div class="pt-10 pb-40 bg-white shadow-xl rounded-xl pl-12 pr-12  text-center"
+  >
+  <div class="text-2xl font-seminbold text-center m-12"> LoginForm</div>
+  <form [formGroup]="loginForm" method="post" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="first-name" class="-ml-2">User Email:</label>
+      <input type="text" id="first-name" formControlName="email"  class=" ml-4 bg-red-300 text-white  rounded-xl">
+    </div>
+    <div class="mt-2">
+    <label for="password" >Password:</label>
+    <input type="password" name="password" id="password" formControlName="password" class=" ml-5 bg-red-300 rounded-xl">
+  </div>
+  <button class="bg-blue-400 mt-4 text-white p-2 rounded-xl hover:bg-green-400 transition transition-delay-300" type="submit" routerLink="dashboard" > Login</button>
+  </form>
+  <button (click)="checkLocalStorage()">Check the status</button>
+
+
+</div>
+</div>
