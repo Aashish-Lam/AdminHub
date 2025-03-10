@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { NavigationService } from '../services/navigation.service';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +13,13 @@ import { NavigationService } from '../services/navigation.service';
 })
 export class HeaderComponent {
   clicked: boolean = false;
-  constructor(public navservice: NavigationService) {}
+  constructor(public navservice: NavigationService, public authservice:AuthService ,private router:Router) {}
   onclick($event: any) {
     this.clicked = !this.clicked;
     this.navservice.setToggle(this.clicked);
+  }
+  logOut(){
+    this.authservice.logout()
+    this.router.navigate([`login`])
   }
 }

@@ -22,7 +22,6 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
     ReactiveFormsModule,
     MatIconModule,
     HeaderComponent,
-
     RouterModule,
   ],
   templateUrl: './sidebar.component.html',
