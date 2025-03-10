@@ -13,7 +13,10 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   clicked: boolean = false;
-  constructor(public navservice: NavigationService, public authservice:AuthService ,private router:Router) {}
+  username!:string|null
+  constructor(public navservice: NavigationService, public authservice:AuthService ,private router:Router) {
+    this.username=this.authservice.getUsername()
+  }
   onclick($event: any) {
     this.clicked = !this.clicked;
     this.navservice.setToggle(this.clicked);
@@ -21,5 +24,8 @@ export class HeaderComponent {
   logOut(){
     this.authservice.logout()
     this.router.navigate([`login`])
+  }
+  displayUsername():string|null{
+    return this.username
   }
 }
