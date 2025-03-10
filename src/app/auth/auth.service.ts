@@ -33,4 +33,12 @@ export class AuthService {
     const  token= localStorage.getItem('JWT_Token')
     return !this.jwthelperservice.isTokenExpired(token);
   }
+  getUsername():string|null{
+    let token=localStorage.getItem('JWT_Token')
+    if(token){
+      const decodedToken=this.jwthelperservice.decodeToken(token);
+      return decodedToken?.name||null;
+    }
+    return null
+  }
 }
