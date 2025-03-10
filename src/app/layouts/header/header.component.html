@@ -31,19 +31,12 @@
     </form>
 </div>
 <div class="inline basis-40/100 md:basis-30/100 lg:basis-20/100">
-    <mat-icon
-      matBadge="15 "
-      matBadgeColor="accent"
-      class="mt-6 mr-6 align-middle"
-      >notifications</mat-icon
-    >
     <img
       src="https://th.bing.com/th/id/OIP.-Gblv24vnVQhC76XeRwIGwHaFM?w=247&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
       class="bg-blue-100 h-10 w-10 inline rounded-3xl mt-5"
     />
-    <div class="inline  bg-blue-100">
+    <p class="inline">{{displayUsername()}}</p>
       <button class="bg-yellow-400 mt-5 text-black p-1 rounded-xl hover:bg-red-400 hover:text-white transition transition-delay-300 ml-5"(click)="logOut()" > Logout</button>
-    </div>
 </div>
 
 </div>
