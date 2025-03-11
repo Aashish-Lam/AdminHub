@@ -10,7 +10,9 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class LoginComponent {
   constructor(public authservice:AuthService, public router:Router){
-
+    if (this.authservice.isAuthenticated()) {
+      this.router.navigate(['/dashboard']); // Redirect to dashboard if already logged in
+    }
   }
   loginForm= new FormGroup({
     email: new FormControl("",[Validators.required,Validators.minLength(5)]),
@@ -30,12 +32,10 @@ export class LoginComponent {
 
   }
   checkLocalStorage(){
-
     if (localStorage.getItem('JWT_Token') !== null) {
       console.log(localStorage.getItem('JWT_Token'));
       } else {
       console.log(localStorage.getItem('JWT_Token'));
       }
   }
-
 }
